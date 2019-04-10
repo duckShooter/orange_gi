@@ -26,6 +26,14 @@ public class Product extends BaseEntity {
 		this.name = name;
 	}
 	
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 	public String getManufacturer() {
 		return manufacturer;
 	}
@@ -49,4 +57,5 @@ public class Product extends BaseEntity {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
 }
