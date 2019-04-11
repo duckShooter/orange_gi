@@ -29,4 +29,9 @@ public class Category extends BaseEntity {
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
+
+	@Override
+	public String toString() {
+		return "Category [name=" + name + ", products=" + products + ", id=" + id + "]";
+	}
 }

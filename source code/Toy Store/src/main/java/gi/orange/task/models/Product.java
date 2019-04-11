@@ -12,7 +12,7 @@ public class Product extends BaseEntity {
 	private String description;
 	private String manufacturer;
 	
-	@Column(scale=2)
+	@Column(precision=10, scale=2)
 	private BigDecimal price;
 	
 	@ManyToOne
@@ -58,4 +58,9 @@ public class Product extends BaseEntity {
 		this.category = category;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [name=" + name + ", description=" + description + ", manufacturer=" + manufacturer + ", price="
+				+ price + ", id=" + id + "]";
+	}
 }
