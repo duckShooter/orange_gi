@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		//I'm not following Spring schema, I'm using my own; a single table that stores username and password only.  
+		//I'm not following Spring schema, I'm using my own; a single table that stores username and password only (fits the purpose).
 		auth.jdbcAuthentication().dataSource(dataSource) //I used JDBC directly instead of implementing JPA authentication provider
 			.usersByUsernameQuery("SELECT username, password, TRUE FROM user WHERE username=?") //All accounts are enabled
 			.authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' from user WHERE username=?"); //I've only one role defined
