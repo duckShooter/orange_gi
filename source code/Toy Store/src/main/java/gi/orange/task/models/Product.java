@@ -4,18 +4,27 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Product extends BaseEntity {
+	
+	@NotNull //JSR 303
+	@NotEmpty
 	private String name;
+	
 	private String description;
-	private String manufacturer;
+	
+	private String vendor;
 	
 	@Column(precision=10, scale=2)
 	private BigDecimal price;
 	
 	@ManyToOne
+	@JoinColumn(nullable=false) //JPA
 	private Category category;
 	
 	public String getName() {
@@ -34,12 +43,12 @@ public class Product extends BaseEntity {
 		this.description = description;
 	}
 	
-	public String getManufacturer() {
-		return manufacturer;
+	public String getVendor() {
+		return vendor;
 	}
 
-	public void setManufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
 	}
 
 	public BigDecimal getPrice() {
@@ -60,7 +69,7 @@ public class Product extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Product [name=" + name + ", description=" + description + ", manufacturer=" + manufacturer + ", price="
-				+ price + ", id=" + id + "]";
+		return "Product [name=" + name + ", description=" + description + ", vendor=" + vendor + ", price="
+				+ price + ", category=" + category.getName() + ", id=" + id + "]";
 	}
 }
