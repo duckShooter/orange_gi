@@ -7,10 +7,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Category extends BaseEntity {
 	private String name;
 	
+	@JsonBackReference
 	@OneToMany(mappedBy="category", cascade=CascadeType.ALL)
 	private Set<Product> products = new HashSet<>();
 
