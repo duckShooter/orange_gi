@@ -23,13 +23,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 			.csrf().disable() //I don't need this
 			.sessionManagement().disable() //nor this
-			.authorizeRequests() //Basic authorization [Authorization: Basic base64EncodedCredentials]
+			.authorizeRequests() //Basic authorization [-H Authorization: Basic base64EncodedCredentials]
 			.antMatchers("/login").permitAll() //Only this API call is permitted for all
-			.anyRequest().authenticated();//All other requests requires authentication
+			.anyRequest().authenticated(); //All other requests requires authentication
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		//I'm not following Spring schema, I'm using my own; a single table that stores username and password only.  
 		auth.jdbcAuthentication().dataSource(dataSource) //I used JDBC directly instead of implementing JPA authentication provider
 			.usersByUsernameQuery("SELECT username, password, TRUE FROM user WHERE username=?") //All accounts are enabled
 			.authoritiesByUsernameQuery("SELECT username, 'ROLE_USER' from user WHERE username=?"); //I've only one role defined
