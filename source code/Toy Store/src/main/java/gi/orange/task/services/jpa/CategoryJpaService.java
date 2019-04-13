@@ -46,4 +46,11 @@ public class CategoryJpaService implements CategoryService {
 	public void deleteById(Integer id) {
 		categoryRepository.deleteById(id);
 	}
+
+	@Override
+	public Set<Category> findByName(String name) {
+		return categoryRepository.findByNameContainingIgnoreCase(name);
+	}
+	
+	
 }
