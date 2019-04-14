@@ -78,7 +78,7 @@ then you can access the application via `localhost:8080/toy_store/`
       
     A brief list for the required APIs:
     | API name | URL | Request body |
-    |----------|-----|--------------|
+    | ---------- | ----- | ------------- |
     | Login | `POST localhost:8080/toy_store/login` | ```{ "username": "user", "password": "secret" }``` |
     | Add new category | `PUT localhost:8080/toy_store/api/categories` | ```{ "name": "something" }``` |
     | List all categories | `GET localhost:8080/toy_store/api/categories` | N/A |
