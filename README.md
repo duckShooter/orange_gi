@@ -76,19 +76,20 @@ then you can access the application via `localhost:8080/toy_store/`
     that the user wasn't found.  
     Once logged in and authenticated you can access the API `localhost:8080/toy_store/api/...`  
       
-    A brief list for the required APIs:
-    | API name | URL |
-    | --- | --- |
-    | Login | `POST localhost:8080/toy_store/login` |
-    | Add new category | `PUT localhost:8080/toy_store/api/categories` |
-    | List all categories | `GET localhost:8080/toy_store/api/categories` |
-    | Delete an existing category | `DELETE localhost:8080/toy_store/api/categories/{{id}}` |
-    | Rename an existing category | `POST localhost:8080/toy_store/api/categories/{{id}}?name=` |
-    | Add new product | `PUT localhost:8080/toy_store/api/categories/{{id}}`<br>or `PUT localhost:8080/toy_store/api/products` |
-    | List all products | `GET localhost:8080/toy_store/api/products` |
-    | Delete an exisiting product | `DELETE localhost:8080/toy_store/api/products/{{id}}` |
-    | Update existing product | `POST localhost:8080/toy_store/api/products/{{id}}` |
-    | List all products in a sepcific category | `GET localhost:8080/toy_store/api/categories/{{id}` |
+    A brief list for the required APIs:  
+
+    API name | URL
+    --- | --- 
+    Login | `POST localhost:8080/toy_store/login`
+    Add new category | `PUT localhost:8080/toy_store/api/categories`
+    List all categories | `GET localhost:8080/toy_store/api/categories`
+    Delete an existing category | `DELETE localhost:8080/toy_store/api/categories/{{id}}`
+    Rename an existing category | `POST localhost:8080/toy_store/api/categories/{{id}}?name=`
+    Add new product | `PUT localhost:8080/toy_store/api/categories/{{id}}`<br>or `PUT localhost:8080/toy_store/api/products`
+    List all products | `GET localhost:8080/toy_store/api/products`
+    Delete an exisiting product | `DELETE localhost:8080/toy_store/api/products/{{id}}`
+    Update existing product | `POST localhost:8080/toy_store/api/products/{{id}}`
+    List all products in a sepcific category | `GET localhost:8080/toy_store/api/categories/{{id}`
 
 
 ---
