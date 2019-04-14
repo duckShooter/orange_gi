@@ -47,7 +47,7 @@ You can deploy on another application server if you like, nonetheless, I only us
 ---
 ## __Running The Application__
 With Tomcat running, I'm assuming you're on localhost and Tomcat is configured to run on port 8080 (the default)  
-then you can access the application throw `localhost:8080/toy_store/`
+then you can access the application via `localhost:8080/toy_store/`
 
 * ### __Authentication__
     As I mentioned above, all API calls will require authentication  
@@ -74,7 +74,22 @@ then you can access the application throw `localhost:8080/toy_store/`
       
     You will receive 200 http repsonse upon successful login or 404 http response for wrong credentials indicating  
     that the user wasn't found.  
-    Once logged in and authenticated you can access the API `localhost:8080/toy_store/api/...`. Please see the API docs below
+    Once logged in and authenticated you can access the API `localhost:8080/toy_store/api/...`  
+      
+    A brief list for the required APIs:
+    | API name | URL | Request body |
+    |----------|-----|--------------|
+    | Login | `POST localhost:8080/toy_store/login` | ```{ "username": "user", "password": "secret" }``` |
+    | Add new category | `PUT localhost:8080/toy_store/api/categories` | ```{ "name": "something" }``` |
+    | List all categories | `GET localhost:8080/toy_store/api/categories` | N/A |
+    | Delete an existing category | `DELETE localhost:8080/toy_store/api/categories/{{id}}` | N/A |
+    | Rename an existing category | `POST localhost:8080/toy_store/api/categories/{{id}}?name=` | N/A |
+    | Add new product | `PUT localhost:8080/toy_store/api/categories/{{id}}`<br>or `PUT localhost:8080/toy_store/api/products` | ```{"name": "something", "description": "something", "vendor": "something", "price": 0.00 }```<br> or ```{ "name": "something", "description": "something", "vendor": "something", "price": 0.00, "category": { "id": 1 } }``` |
+    | List all products | `GET localhost:8080/toy_store/api/products` | N/A |
+    | Delete an exisiting product | `DELETE localhost:8080/toy_store/api/products/{{id}}` | N/A |
+    | Update existing product | `POST localhost:8080/toy_store/api/products/{{id}}` | ```{"name": "something", "description": "something", "vendor": "something", "price": 0.00 }```|
+    | List all products in a sepcific category | `GET localhost:8080/toy_store/api/categories/{{id}` | N/A |
+
 
 ---
 ## __Postman Collection__ 
@@ -82,6 +97,5 @@ then you can access the application throw `localhost:8080/toy_store/`
 If you're using Postman to test the API, then I'm already sharing a collection containing all the requests. Launch it directly by clicking the button above.
 
 ---
-## __REST API Docs__ 
 
 
