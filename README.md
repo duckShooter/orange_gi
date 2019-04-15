@@ -20,6 +20,15 @@ using the Login API with the correct credentials.
 
 ---
 
+## __Note About The Population of Database Tabels__
+The database will be automatically created by Hibernate/ORM if not constructed already using `database/schema.sql` file.
+
+I've provided a `database/data.sql` file which contains sql scripts for populating tables with data manually.  
+Alternatively, if you don't manually add any data in the database, the application will bootstrap it with data
+automatically.  
+
+---
+
 ## __Deployment__
 I'm using __Maven 3.5__ as build tool and __Tomcat 9__ as servlet container for deployment  
 You can deploy on another application server if you like, nonetheless, I only use Tomcat 
@@ -59,7 +68,8 @@ then you can access the application via `localhost:8080/toy_store/`
     As I mentioned above, all API calls will require authentication  
     I'm using Spring Security to provide simple basic authentication
 
-    Since there's no registeration option to add users, you have to manually add a user in the database
+    Since there's no registeration option to add users, you have to manually add a user in the database  
+    __Update:__ This step isn't necessary now, the following user will be automatically persisted in the database please refer to [this note](#note-about-the-population-of-database-tabels).
     ```SQL
     INSERT INTO `user` (`username`, `password`) VALUES ('user', '$2a$10$a8r484Ht4fOSYUbVR3mZZOlMOEJu17PuRakkCBz07dSxrWifU.krK');
     ```
