@@ -16,6 +16,15 @@ public class User {
 	@NotEmpty
 	private String password;
 	
+	public User() {
+		
+	}
+	
+	public User(@NotNull @NotEmpty String username, @NotNull @NotEmpty String password) {
+		this.username = username;
+		this.password = password;
+	}
+
 	public String getUsername() {
 		return username;
 	}
