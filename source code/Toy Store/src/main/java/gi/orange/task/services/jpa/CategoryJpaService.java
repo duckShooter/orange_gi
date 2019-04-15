@@ -51,6 +51,4 @@ public class CategoryJpaService implements CategoryService {
 	public Set<Category> findByName(String name) {
 		return categoryRepository.findByNameContainingIgnoreCase(name);
 	}
-	
-	
 }
