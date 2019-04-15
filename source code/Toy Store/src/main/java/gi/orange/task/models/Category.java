@@ -6,11 +6,15 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Category extends BaseEntity {
+	@NotNull
+	@NotEmpty
 	private String name;
 	
 	@JsonBackReference
