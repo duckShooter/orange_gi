@@ -1,5 +1,7 @@
 package gi.orange.task.error;
 
+import org.springframework.security.core.AuthenticationException;
+
 import javax.validation.ConstraintViolationException;
 
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -17,7 +19,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(ConstraintViolationException.class)
 	@ResponseStatus(code=HttpStatus.UNPROCESSABLE_ENTITY)
-	public @ResponseBody ErrorResponse handleConstraintViolationException(
+	public @ResponseBody ErrorResponse handleConstraintViolationException (
 			ConstraintViolationException exception, WebRequest request) {
 		final HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
 		final String requestPath = ((ServletWebRequest)request).getRequest().getRequestURI();
@@ -28,9 +30,19 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 	
 	@ExceptionHandler(EmptyResultDataAccessException.class)
 	@ResponseStatus(code=HttpStatus.UNPROCESSABLE_ENTITY)
-	public @ResponseBody ErrorResponse handleEmptyResultDataAccessException(
+	public @ResponseBody ErrorResponse handleEmptyResultDataAccessException (
 			EmptyResultDataAccessException exception, WebRequest request) {
 		final HttpStatus status = HttpStatus.UNPROCESSABLE_ENTITY;
+		final String requestPath = ((ServletWebRequest)request).getRequest().getRequestURI();
+		return new ErrorResponse(status.value(), 
+				status.getReasonPhrase(), exception.getMessage(), requestPath); 
+	}
+	
+	@ExceptionHandler(AuthenticationException.class)
+	@ResponseStatus(code=HttpStatus.UNAUTHORIZED)
+	public @ResponseBody ErrorResponse handleAuthenticationException (
+			AuthenticationException exception, WebRequest request) {
+		final HttpStatus status = HttpStatus.UNAUTHORIZED;
 		final String requestPath = ((ServletWebRequest)request).getRequest().getRequestURI();
 		return new ErrorResponse(status.value(), 
 				status.getReasonPhrase(), exception.getMessage(), requestPath); 
