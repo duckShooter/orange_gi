@@ -40,7 +40,7 @@ You can deploy on another application server if you like, nonetheless, I only us
 
 * ### __Deploying to Tomcat__
     You need to download [Tomcat 9](https://tomcat.apache.org/download-90.cgi)  
-    > ❗️ __NOTE__: For earlier versions (8, 7) Tomcat will complain and throw an exception on startup related to one of the JAR files  required as a dependency for Hibernate (older versions of that JAR file  will work fine with no exceptions thrown by Tomcat),  *However*, this will not affect the execution of the app so you can simply ignore those exceptions or Use Tomcat 9.x.x 
+    > ❗️ __NOTE__: For earlier versions (8, 7) Tomcat will complain and throw an exception on startup related to one of the JAR files  required as a dependency for Hibernate (older versions of that JAR file  will work fine with no exceptions thrown by Tomcat),  *However*, __this will not affect the execution of the app__ so you can simply ignore those exceptions or Use Tomcat 9.x.x 
 
     The easiest way to deploy is by copying the `toy_store.war` file into `tomcat_directory/webapps` folder
     and start tomcat.  
@@ -74,8 +74,8 @@ then you can access the application via `localhost:8080/toy_store/`
     ```
     you can add other users if you like, the password is hashed using bcrypt hashing function with 10 rounds  
       
-    You will receive 200 http repsonse upon successful login or 404 http response for wrong credentials indicating  
-    that the user wasn't found.  
+    You will receive 200 http repsonse upon successful login or 401 http response for wrong credentials indicating  
+    that there was no user found for the provided credentials.  
     Once logged in and authenticated you can access the API `localhost:8080/toy_store/api/...`  
       
     A brief list for the required APIs:  
