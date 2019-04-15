@@ -1,6 +1,10 @@
 # Toy Store RESTful API
 I've divided this doc into several small sections for clarity sake
 
+* [Deployment](#deployment)
+* [Running The Application](#running-the-application)
+* [Postman Collection](#postman-collection)
+
 ## __Business Assupmtions__
 I came up with a couple of assumptions regarding the problem domain to address a few unclear requirements
 1. A Product can belong to only one category, that is, a many-to-one relationship
@@ -36,9 +40,7 @@ You can deploy on another application server if you like, nonetheless, I only us
 
 * ### __Deploying to Tomcat__
     You need to download [Tomcat 9](https://tomcat.apache.org/download-90.cgi)  
-    > ❗️ __NOTE__: For earlier versions (8, 7) Tomcat will complain and throw an exception on startup related to one of the JAR files  
-    required as a dependency for Hibernate (older versions of that JAR file  will work fine with no exceptions thrown by Tomcat),  
-    *However*, this will not affect the execution of the app so you can simply ignore those exceptions or Use Tomcat 9.x.x 
+    > ❗️ __NOTE__: For earlier versions (8, 7) Tomcat will complain and throw an exception on startup related to one of the JAR files  required as a dependency for Hibernate (older versions of that JAR file  will work fine with no exceptions thrown by Tomcat),  *However*, this will not affect the execution of the app so you can simply ignore those exceptions or Use Tomcat 9.x.x 
 
     The easiest way to deploy is by copying the `toy_store.war` file into `tomcat_directory/webapps` folder
     and start tomcat.  
@@ -96,7 +98,3 @@ then you can access the application via `localhost:8080/toy_store/`
 ## __Postman Collection__ 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/55851a7302a2a4ea8598)  
 If you're using Postman to test the API, then I'm already sharing a collection containing all the requests. Launch it directly by clicking the button above.
-
----
-
-
