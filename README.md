@@ -21,34 +21,38 @@ using the Login API with the correct credentials.
 ---
 
 ## __Deployment__
-I'm using __Maven__ as build tool and __Tomcat 9__ as servlet container for deployment  
+I'm using __Maven 3.5__ as build tool and __Tomcat 9__ as servlet container for deployment  
 You can deploy on another application server if you like, nonetheless, I only use Tomcat 
 * ### __Configuring the Data Source__
-    You need to specify the required information for your data source (i.e. URL, username, password ... etc).  
+    You need to specify the required information for your data source (i.e. URL, schema name, username, password ... etc).  
     you can do so by modifying `source code/Toy Store/src/main/resources/application.yml`
 
 * ### __Packaging with Maven__
     Navigate to the application main directory `source code/Toy Store/`  
-    and run the maven package command with -e option
+    and run the maven package command with error stack trace turned on
     ```Shell
     mvn clean package -e
     ``` 
+    or if you like to skip the unit tests run the above command with defining test.skip property
+    ```Shell
+    mvn clean package -e -Dmaven.test.skip
+    ```
+
     Or alternatively, import the project in your IDE and package using maven run configuration.  
     This process will produce a __WAR__ deployment unit which can be found in the generated  
     directory `source code/Toy Store/target` under the name `toy_store.war`
 
 
 * ### __Deploying to Tomcat__
-    You need to download [Tomcat 9](https://tomcat.apache.org/download-90.cgi)  
-    > ❗️ __NOTE__: For earlier versions (8, 7) Tomcat will complain and throw an exception on startup related to one of the JAR files  required as a dependency for Hibernate (older versions of that JAR file  will work fine with no exceptions thrown by Tomcat),  *However*, __this will not affect the execution of the app__ so you can simply ignore those exceptions or Use Tomcat 9.x.x 
+    You need to download [Tomcat 9](https://tomcat.apache.org/download-90.cgi). Older versions of Tomcat may also work.
+    > ❗️ __NOTE__: For earlier versions (8, 7) Tomcat will complain and throw an exception on startup related to one of the JAR files  required as a dependency for Hibernate (older versions of that JAR file  will work fine with no exceptions thrown by Tomcat),  *However*, __this will not affect the execution of the app__ so you can simply ignore those exceptions or Use Tomcat 9.x.x
 
-    The easiest way to deploy is by copying the `toy_store.war` file into `tomcat_directory/webapps` folder
-    and start tomcat.  
+    The easiest way to deploy is by copying the `toy_store.war` file into `tomcat_directory/webapps` folder and start tomcat.  
     There are other deployment methods which require extra configuration in maven.
 
 ---
 ## __Running The Application__
-With Tomcat running, I'm assuming you're on localhost and Tomcat is configured to run on port 8080 (the default)  
+With Tomcat running (or the application server of your choice), I'm assuming you're on localhost and Tomcat is configured to run on port 8080 (the default)  
 then you can access the application via `localhost:8080/toy_store/`
 
 * ### __Authentication__
@@ -96,5 +100,5 @@ then you can access the application via `localhost:8080/toy_store/`
 
 ---
 ## __Postman Collection__ 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/55851a7302a2a4ea8598)  
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e3831137ece7101e539b)  
 If you're using Postman to test the API, then I'm already sharing a collection containing all the requests. Launch it directly by clicking the button above.
