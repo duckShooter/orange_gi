@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import gi.orange.task.models.User;
 
 @Controller
-public class AnyController {
+public class AuthController {
 	
 	AuthenticationManager authenticationManager;
 	
-	public AnyController(AuthenticationManager authenticationManager) {
+	public AuthController(AuthenticationManager authenticationManager) {
 		this.authenticationManager = authenticationManager;
 	}
 
