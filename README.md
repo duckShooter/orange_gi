@@ -16,8 +16,8 @@ which implies that when a category is deleted all containted products will be al
 ## __API Design Decisions__
 1. the REST API is designed to accept JSON only as a payload for resource creation/update
 2. A client must be authenticated first before using any of the API endpoints, this is done through 
-using the Login API with the correct credentials.
-
+using the Login API with the correct credentials. 
+    > Basic authentication makes the Login API somehow useless. Refer to [issue #1](https://github.com/duckShooter/orange_gi/issues/1) and this [commit](https://github.com/duckShooter/orange_gi/commit/563af214d21c37895204d09480bbb16e182218b7)
 ---
 
 ## __Note About The Population of Database Tabels__
