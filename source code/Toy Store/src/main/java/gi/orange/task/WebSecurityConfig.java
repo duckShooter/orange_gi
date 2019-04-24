@@ -9,6 +9,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -20,12 +21,38 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		/*
+		 * [Issue]
+		 * What's going on? (REST is being violated, that's what's going on)  
+		 * -----------------------------------------------------------------
+		 * Since Spring respond to HTTP basic authentication with a generated token stored as a cookie
+		 * this introduces a state into a stateless protocol.
+		 * Spring requires that either the 'cookie' header or 'authorization' header to be present in
+		 * order to authenticate the client.
+		 * If the client has disabled the use of cookies then the 'authorization' header must be present
+		 * this is actually what we want, to use the 'authorization' header instead of 'cookie'.
+		 * The code of line I've used `sessionManagement().disable()` doesn't seem to do the trick!
+		 * This remains an open issue for me until i fix it.
+		 * -----------------------------------------------------------------
+		 * [Fix]
+		 * while using `sessionManagement().disable()` didn't work as I expected, changing the
+		 * creation policy of sessions to stateless did the job.
+		 * However, this makes the login API useless, since any request with a correct authorization
+		 * header will allow access to resources without the need to login.
+		 * So we will think of login as a way of granting an access token (the session id in this case)
+		 * and the 'cookie' header as the access token used on every request.
+		 * -----------------------------------------------------------------
+		 * [Conclusion]
+		 * Having a "RESTful" login API doesn't make sense when using HTTP basic authentication
+		 */
 		http
 			.csrf().disable() //I don't need this
 			.sessionManagement().disable() //nor this
+			//.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.authorizeRequests() //Basic authorization [-H Authorization: Basic base64EncodedCredentials]
 			.antMatchers("/login").permitAll() //Only this API call is permitted for all
-			.anyRequest().authenticated(); //All other requests requires authentication
+			.anyRequest().authenticated()
+			.and().httpBasic(); //All other requests requires authentication
 	}
 
 	@Override
