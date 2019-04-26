@@ -1,0 +1,25 @@
+<h1 style="margin-bottom: 50px; text-align: center;">Categories</h1>                
+<div style="margin-bottom: 10px">
+    <button mat-raised-button color="primary" 
+      (click)="onClickAdd()">Add New Category</button>
+  </div>
+<mat-list role="list">
+  <mat-list-item *ngFor="let category of categories"> 
+      <a class="item-link" [routerLink]="category.id" style="width: 100%" #cat>{{category.name}}</a>
+      <div hidden #f style="width: 100%;"> 
+        <mat-form-field style="margin-right: 12px;">
+          <input matInput name="name" [ngModel]="category.name"  #field="ngModel">
+        </mat-form-field>
+        <button mat-raised-button color="primary" style="margin-right: 12px;"
+          [disabled]="!field.dirty"
+          (click)="onClickRename(category, field.value); f.hidden=true; cat.hidden=false;">Save</button>
+          <button  mat-raised-button 
+          (click)="f.hidden=true; cat.hidden=false;">Cancel</button>
+      </div>
+      <div style="width: 100%; text-align: right">
+        <a mat-button 
+          (click)="f.hidden=false; cat.hidden=true;">Rename</a>
+        <a mat-button color="warn" (click)="onClickDelete(category.id)">Delete</a>
+      </div>
+  </mat-list-item>
+</mat-list>

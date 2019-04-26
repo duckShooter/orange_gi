@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+
+mat-card-actions button {
+    outline: none;
+}
+
+._tile {
+    background-color: rgb(233, 233, 233); 
+    height: 95%; 
+    width: 100%;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+._control {
+    min-width: 10px;
+    padding: 0 8px;
+    margin: 0;
+}
+
+.price-tag {
+    position: relative;
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 7px;
+    padding-right: 25px;
+}
+
+.kick-right {
+    float: right;
+}
+
+.stick-bottom {
+    position: absolute; 
+    bottom: 10px; 
+    width: 100%;
+}

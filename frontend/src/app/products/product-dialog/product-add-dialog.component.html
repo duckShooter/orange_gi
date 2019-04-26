@@ -1,0 +1,59 @@
+<div class="container" style="min-width: 500px">
+    <h1 mat-dialog-title>Add New Product</h1>
+    <form #form="ngForm">
+    <div mat-dialog-content>
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Name" name="name" autocomplete="off"
+                  [(ngModel)]="product.name" required>
+              </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="full-width">
+              <mat-label>Category</mat-label>
+              <mat-select name="category" [(ngModel)]="product.category.id" required>
+                <mat-option *ngFor="let category of categories"
+                 [value]="category.id">{{category.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="form-group">
+              <mat-form-field class="full-width">
+                    <input matInput placeholder="Price" name="price" autocomplete="off" 
+                    type="number" min="0"  [(ngModel)]="product.price">
+              </mat-form-field>
+          </div>
+          <div class="form-group">
+              <mat-form-field class="full-width">
+                    <input matInput placeholder="Vendor" name="vendor" autocomplete="off"  
+                    [(ngModel)]="product.vendor">
+              </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <mat-form-field class="full-width">
+                <textarea matInput placeholder="Description"  
+                name="description" [(ngModel)]="product.description"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-sm">
+      <div mat-dialog-actions align="end" style="margin-bottom: 5px;">
+        <button mat-raised-button color="primary"
+        [disabled]="!form.valid" (click)="onClickAddReload()">Add</button>
+        <button mat-raised-button style="background-color: whitesmoke"
+          (click)="onClickClose()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+   

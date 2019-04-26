@@ -1,0 +1,8 @@
+.full-width {
+    width: 100%;
+}
+
+div[mat-dialog-actions] button {
+    outline: none;
+    font-weight: bold;
+}

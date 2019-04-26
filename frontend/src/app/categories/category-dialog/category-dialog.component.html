@@ -1,0 +1,27 @@
+<div class="container" style="min-width: 500px">
+  <h1 mat-dialog-title>Add New Category</h1>
+  <form #form="ngForm">
+    <div mat-dialog-content>
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            <mat-form-field class="full-width">
+                <input matInput placeholder="Name" name="name" autocomplete="off"
+                  [(ngModel)]="category.name" required>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <div mat-dialog-actions align="end" style="margin-bottom: 5px;">
+            <button mat-raised-button color="primary"
+            [disabled]="!form.valid" (click)="onClickAddReload()">Add</button>
+            <button mat-raised-button style="background-color: whitesmoke"
+              (click)="onClickClose()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

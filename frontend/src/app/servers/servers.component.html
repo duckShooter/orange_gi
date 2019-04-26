@@ -1,0 +1,10 @@
+<!--Reference: https://angular.io/guide/template-syntax#property-binding--property- 
+    [property]="value" - referes to as property binding -->
+<button class="btn btn-primary" [disabled]="!allowNewServer"
+    (click)="userService.login()">Click To Add Server</button>
+<!-- We can bind any JavaScript object property -->
+<span>Using Property Binding</span><p [innerText]="allowNewServer"></p>
+<!-- Reference: https://angular.io/guide/template-syntax#interpolation-
+    {{ expression }} referes to as Interpolation -->
+<span>Using Interpolation</span><p>{{allowNewServer}}</p>
+<app-server></app-server>

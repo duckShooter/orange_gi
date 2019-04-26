@@ -1,0 +1,31 @@
+<div style="text-align: center;">
+  <img id="logo" src="assets/img/logo.png">
+</div>
+<div class="flat-background" style="background-color: rgba(0, 0, 0, 0.05);">
+  <form (ngSubmit)="onSubmit(form.valid)" #form="ngForm">
+    <div class="form-group">
+      <mat-form-field class="full-width">
+          <input matInput [(ngModel)]="user.username"
+          placeholder="username" name="username" #name="ngModel" required
+          autocomplete="off">
+          <mat-error *ngIf="name.errors?.required"> <!-- Safe navigation operator -->
+              username is <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+        <mat-form-field class="full-width">
+            <input matInput [(ngModel)]="user.password"
+            placeholder="password" type="password" name="password" #pass="ngModel" required> 
+            <mat-error *ngIf="pass.errors?.required">
+                password is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+      <button mat-raised-button color="primary" type="submit" class="full-width"
+      [disabled]="disabled">Login</button>
+      <div class="error-message">
+        <span>{{errorMessage}}</span>
+      </div>
+  </form>
+</div>
