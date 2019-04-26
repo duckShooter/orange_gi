@@ -18,17 +18,7 @@ import { ProductAddDialogComponent } from './products/product-dialog/product-add
 import { CategoriesViewComponent } from './categories/categories-view/categories-view.component';
 import { CategoryDialogComponent } from './categories/category-dialog/category-dialog.component';
 
-
-
-//Reference: https://angular.io/api/core/NgModule
-/* An NgModule is a class marked by the @NgModule decorator. @NgModule takes a metadata object that describes 
-   how to compile a component's template and how to create an injector at runtime. It identifies the module's 
-   own components, directives, and pipes, making some of them public, through the exports property, so that 
-   external components can use them. @NgModule can also add service providers to the application dependency 
-   injectors.
-*/
 @NgModule({
-  //The set of components, directives, and pipes (declarables) that belong to this module.
   declarations: [ 
     AppComponent,
     ServerComponent,
@@ -40,7 +30,7 @@ import { CategoryDialogComponent } from './categories/category-dialog/category-d
     CategoriesViewComponent,
     CategoryDialogComponent
   ],
-  //The set of NgModules whose exported declarables are available to templates in this module.
+
   imports: [ 
     BrowserModule,
     BrowserAnimationsModule,
@@ -50,11 +40,11 @@ import { CategoryDialogComponent } from './categories/category-dialog/category-d
     MaterialModule,
     AppRoutingModule
   ],
-  //The set of injectable objects that are available in the injector of this module. 
+
   providers: [UserService, ProductService, CategoryService],
-  /*The set of components that are bootstrapped when this module is bootstrapped. 
-  The components listed here are automatically added to entryComponents.*/
+
   bootstrap: [AppComponent],
+
   entryComponents: [
     ProductEditDialogComponent, 
     ProductAddDialogComponent,
