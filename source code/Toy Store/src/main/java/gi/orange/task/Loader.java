@@ -26,7 +26,6 @@ public class Loader implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Logger log = LoggerFactory.getLogger(this.getClass());
-		
 		jdbcTemplate.update(INSERT_USER, "user", "$2a$10$a8r484Ht4fOSYUbVR3mZZOlMOEJu17PuRakkCBz07dSxrWifU.krK"); //user, secret
 		
 		byte tableHasData = jdbcTemplate.queryForObject(String.format(CHECK_DATA_EXIST, "category"), Byte.class);

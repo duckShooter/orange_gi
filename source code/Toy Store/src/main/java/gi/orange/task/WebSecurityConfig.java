@@ -47,12 +47,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		 */
 		http
 			.csrf().disable() //I don't need this
-			.sessionManagement().disable() //nor this
-			//.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+			.cors().and() //Use default CORS configuration to handle pre-flight requests 
+			.sessionManagement().disable() //I don't need this
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.authorizeRequests() //Basic authorization [-H Authorization: Basic base64EncodedCredentials]
 			.antMatchers("/login").permitAll() //Only this API call is permitted for all
-			.anyRequest().authenticated()
-			.and().httpBasic(); //All other requests requires authentication
+			.anyRequest().authenticated() //All other requests requires authentication
+			.and().httpBasic();
 	}
 
 	@Override

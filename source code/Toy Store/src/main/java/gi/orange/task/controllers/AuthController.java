@@ -38,7 +38,7 @@ public class AuthController {
 	 * (or along side with) the Authentication header. Spring then uses this cookie value
 	 * sent in the 'cookie' header with every request to authorize the user. 
 	 */
-	@CrossOrigin("http://localhost:4200/")
+	@CrossOrigin("http://localhost:4200")
 	@PostMapping(value="/login", produces=MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<String> doLogin(@RequestBody User user, HttpServletRequest req) {
 		//Authentication with (username/password) as (principal/credentials)
