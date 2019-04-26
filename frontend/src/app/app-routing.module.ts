@@ -4,8 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { ProductsViewComponent } from './products/products-view/products-view.component';
 import { CategoriesViewComponent } from './categories/categories-view/categories-view.component';
 
-
-
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: ProductsViewComponent, pathMatch: 'full'},
