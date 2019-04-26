@@ -1,6 +1,7 @@
 # Toy Store RESTful API
 I've divided this doc into several small sections for clarity sake
 
+* [Frontend](#frontend)
 * [Deployment](#deployment)
 * [Running The Application](#running-the-application)
 * [Postman Collection](#postman-collection)
@@ -26,6 +27,21 @@ The database will be automatically created by Hibernate/ORM if not constructed a
 I've provided a `database/data.sql` file which contains sql scripts for populating tables with data manually.  
 Alternatively, if you don't manually add any data in the database, the application will bootstrap it with data
 automatically.  
+
+---
+## __Frontend__
+I'm using __Angular 7__, You'll need Angular CLI or npm for building the application (use whichever you prefer). 
+
+* ### __Cross Origin__ (BACKEND)
+    I'm using @CrossOrigin annotation on controllers to configure them for cross origin requests (no CORS filters used as not needed)  
+    The backend is configured to allow CORS to any host just in case you're using something other than `localhost:4200` to run Angular app so you don't have to modify anything in the backend.
+
+Steps (with CLI):
+1. This step is required to build the `node_modules` folder:
+    - Create a new angular app (CLI command `ng new your-app --skipGit`), delete all files/folders except for `node_moules` and copy the files from `frontend` to the new app folder.
+    - __Or__, copy `node_modules` folder from an existing Angular app into `frontend` folder (again, whichever you prefer).  
+2. You'll need Angular Materials package (If you don't have it installed) alongside some other packeges (CLI command `npm install --save @angular/material @angular/cdk @angular/animations`).
+3. Run with (CLI command `ng serve --open`)   
 
 ---
 
