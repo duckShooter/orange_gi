@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import gi.orange.task.models.Product;
 import gi.orange.task.services.ProductService;
 
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin
 @Controller //@RestController is redundant here, as I'll be using ResponseEntity to get better control of what's returned
 @RequestMapping("/api/products")
 public class ProductController {

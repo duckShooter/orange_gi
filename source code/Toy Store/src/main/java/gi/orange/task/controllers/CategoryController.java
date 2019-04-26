@@ -23,7 +23,7 @@ import gi.orange.task.models.Product;
 import gi.orange.task.services.CategoryService;
 import gi.orange.task.services.ProductService;
 
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin
 @Controller
 @RequestMapping("/api/categories")
 public class CategoryController {
